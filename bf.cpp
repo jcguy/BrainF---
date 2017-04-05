@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#include <algorithm>
 
 #define ARRAY_SIZE 30000
 #define PRINT_SIZE 20
@@ -26,6 +27,8 @@ int main(int argc, char** argv) {
     // Set up the tape
     unsigned char* tape = new unsigned char[ARRAY_SIZE];
     unsigned char* t_ptr = tape;
+
+    std::fill_n(tape, ARRAY_SIZE, 0);
 
     std::stack<char*> brackets;
 
