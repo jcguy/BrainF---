@@ -4,11 +4,11 @@
 #include <string>
 #include <algorithm>
 
-#define ARRAY_SIZE 30000
+#define ARRAY_SIZE 50000
 #define PRINT_SIZE 20
 
-int main(int argc, char** argv) {
 
+int main(int argc, char** argv) {
     if (argc == 1) {
         std::cerr << "No file given";
     }
@@ -20,12 +20,12 @@ int main(int argc, char** argv) {
     pbuf->pubseekpos(0, fin.in);
 
     // Copy the file to an array
-    char* f_buf = new char[size];
+    auto f_buf = new char[size];
     pbuf->sgetn(f_buf, size);
     fin.close();
 
     // Set up the tape
-    unsigned char* tape = new unsigned char[ARRAY_SIZE];
+    auto tape = new unsigned char[ARRAY_SIZE];
     unsigned char* t_ptr = tape;
 
     std::fill_n(tape, ARRAY_SIZE, 0);
@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
                      * far, and stopping when we've seen
                      * just as many ']'s
                      */
-                    
+
                     // We've seen one so far
                     f_ptr++;
                     for (int n = 1; n > 0; f_ptr++) {
